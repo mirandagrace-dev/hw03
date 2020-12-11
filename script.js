@@ -20,45 +20,40 @@ function writePassword() {
 function generatePassword() {
     //prompt user
     pwLength = prompt("How many characters do you want the password to be?");
-    console.log(pwLength)
     pwNum = confirm("Do you want to allow numeric characters?");
-    console.log(pwNum)
     pwCap = confirm("Do you want to allow capital letters?");
-    console.log(pwCap);
     pwLow = confirm("What about lowercase ones?");
-    console.log(pwLow);
     pwSpChar = confirm("And finally, do you want to include special characters?");
-    console.log(pwSpChar);
 
+    //create local variables
     var criteria = [];
     var newPW = "";
+
+    //check which criteria the user selected
+    if(pwNum){
+        criteria.push('1','2','3','4','5','6','7','8','9','0');
+    }
+    if(pwCap){
+        criteria.push('A','B','C','D','E','F','G','H','I','J','K','L'
+            ,'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+    }
     if(pwLow){
         criteria.push('a','b','c','d','e','f','g','h','i','j','k','l'
             ,'m','n','o','p','q','r','s','t','u','v','w','x','y','z');
     }
-
-    for(var i = 0; i < pwLength; i++){
-        var randomChar = criteria[Math.floor(criteria.length * Math.random())];
-        newPW = newPW.concat(randomChar);
+    if(pwSpChar){
+        criteria.push('!','#','$','%','&','(',')','-','/',':',';','?','@','[',']','~');
     }
 
-    
+    //loop through length of desired password and add a random character from the criteria array
+    for(var i = 0; i < pwLength; i++){
+        var randomChar = criteria[Math.floor(criteria.length * Math.random())];
 
+        //add new character to the new password string
+        newPW = newPW.concat(randomChar);
+    }
+    
     return newPW;
-    
-
-
-    //math.random
-    //conditionals
-    //array logic
-     //callback function
-
-     //get values from user
-
-    
-
-
-     return "Howdy!";
 }
 
 // Add event listener to generate button
